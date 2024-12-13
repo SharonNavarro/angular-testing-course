@@ -1,0 +1,5 @@
+# Ejecutar lint-staged para archivos staged
+npx lint-staged
+
+# Ejecutar tests
+npm test

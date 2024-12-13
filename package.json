@@ -1,7 +1,6 @@
 {
   "name": "angular-testing-course",
   "version": "0.0.0",
-
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,8 +10,9 @@
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
     "enabled-husky": "husky install",
-    "prepare": "husky",
-    "format": "prettier --write \"./src/**/*.{ts,json,html,scss,css,md}\""
+    "prepare": "npx husky init",
+    "format": "prettier --write \"./src/**/*.{ts,json,html,scss,css,md}\"",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +36,12 @@
     "@commitlint/config-conventional": "^19.6.0",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^29.5.14",
-    "angular-eslint": "^19.0.2",
+    "angular-eslint": "19.0.2",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "jest": "^29.7.0",
@@ -48,7 +53,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
-    "typescript": "~5.4.2",
-    "typescript-eslint": "^8.18.0"
+    "typescript": "~5.4.2"
   }
 }

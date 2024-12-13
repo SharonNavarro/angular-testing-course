@@ -1,0 +1,9 @@
+# Verificar si el mensaje de commit es válido
+if head -1 "$1" | grep -qE "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)(\(.+?\))?: .{1,}$"; then
+    # Si el mensaje de commit es válido, continúa con el resto del script
+    npx --no -- commitlint --edit "$1"
+else
+    # Si el mensaje de commit no es válido, aborta el commit
+    echo "Aborting commit. Your commit message is invalid." >&2
+    exit 1
+fi
