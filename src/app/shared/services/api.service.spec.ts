@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -50,6 +51,30 @@ describe('ApiService', () => {
       expect(tag).toEqual({ id: '1', name: 'foo' });
       expect(req.request.method).toEqual('POST');
       expect(req.request.body).toEqual({ name: 'foo' });
+    });
+
+    it('throws an error if request fails', () => {
+      let actualError: HttpErrorResponse | undefined;
+      apiService.createTag('foo').subscribe({
+        next: () => {
+          fail('Success should not be called');
+        },
+        error: err => {
+          actualError = err;
+        },
+      });
+      const req = httpTestingController.expectOne(urlService + '/tags');
+      req.flush('Server Error', {
+        status: 422,
+        statusText: 'Unprocessible entity',
+      });
+
+      if (!actualError) {
+        throw new Error('Error needs to be undefined');
+      }
+
+      expect(actualError.status).toEqual(422);
+      expect(actualError.statusText).toEqual('Unprocessible entity');
     });
   });
 });
