@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
 
 import { UserInterface } from '../types/user.interface';
+import { UtilsService } from '../utils/utils.service';
 import { UsersService } from './users.service';
-import { UtilsService } from './utils.service';
 
 describe('UsersService', () => {
   let usersService: UsersService;
