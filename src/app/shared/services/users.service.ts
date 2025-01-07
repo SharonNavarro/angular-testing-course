@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { UserInterface } from '../types/user.interface';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../utils/utils.service';
 
 @Injectable()
 export class UsersService {

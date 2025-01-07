@@ -1,13 +1,28 @@
-import { pluck, range } from './utils';
+import { TestBed } from '@angular/core/testing';
 
-describe('utils', () => {
+import { UtilsService } from './utils.service';
+
+describe('UtilsService', () => {
+  let utilsService: UtilsService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [UtilsService],
+    });
+
+    // Inyecta el servicio en las pruebas
+    utilsService = TestBed.inject(UtilsService);
+  });
+
   describe('range', () => {
     it('returns correct range from 1 to 5', () => {
-      expect(range(1, 5)).toEqual([1, 2, 3, 4]);
+      // Llama al método `range` del servicio
+      expect(utilsService.range(1, 5)).toEqual([1, 2, 3, 4]);
     });
 
     it('returns correct range from 41 to 44', () => {
-      expect(range(41, 44)).toEqual([41, 42, 43]);
+      // Llama al método `range` del servicio
+      expect(utilsService.range(41, 44)).toEqual([41, 42, 43]);
     });
   });
 
@@ -18,7 +33,9 @@ describe('utils', () => {
         { id: '2', name: 'bar' },
         { id: '3', name: 'baz' },
       ];
-      expect(pluck(data, 'id')).toEqual(['1', '2', '3']);
+
+      // Llama al método `pluck` del servicio
+      expect(utilsService.pluck(data, 'id')).toEqual(['1', '2', '3']);
     });
   });
 });
